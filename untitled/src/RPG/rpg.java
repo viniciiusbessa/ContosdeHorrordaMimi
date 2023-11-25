@@ -1,10 +1,17 @@
 package RPG;
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.Random;
+
 
 public class rpg {
     static Scanner entrada = new Scanner(System.in);
     static String nomeUsu = pegaNome();
     static int vida = qtdVida();
+
+    static String[] perguntas = {};
+
+    static Random random = new Random();
 
     public static void main(String[] args) {
 
@@ -56,7 +63,53 @@ public class rpg {
 
         vida = qtdVida();
 
-        estiloEscrita("\nvo te devolve carai tava brincanokk " + vida);
+        estiloEscrita("\nvo te devolve tava brincanokk " + vida);
+
+
+
+
+        //parte principal do jogo, as perguntas no caso
+        //apenas pra vc consultar caso se perca na logica:
+        //o código vai ser uma espécie de engine, use funções que alimentam a logica e use a main apenas pra chamar as funções já existentes :)
+        estiloEscrita("\n\nbao, vo testar agora o lance das perguntae tals :)");
+
+        String[] perguntasteste = {"que dia que o latino adotou o macaco 'twelves' dele???", "qual o nome do pai do marcelo filho?", "quantos eh o ideal? (a resposta certa é 5,2 :) )"};
+
+        int randomIndex = random.nextInt(perguntasteste.length);
+        String randomTeste = perguntasteste[randomIndex];
+
+        //pergunta da silva
+        String preguntatio = String.valueOf(randomTeste);
+        estiloEscrita("\n" + preguntatio);
+
+        switch(randomIndex){
+            case 0:
+                perguntas = new String[]{"teste1", "teste1", "teste1"};
+
+                for (int j = 0; j < perguntas.length; j++) {
+                    System.out.print("\n" + perguntas[j]);
+                }
+                break;
+            case 1:
+                perguntas = new String[]{"teste2", "teste2", "teste2"};
+
+                for (int j = 0; j < perguntas.length; j++) {
+                    System.out.print("\n" + perguntas[j]);
+                }
+                break;
+            case 2:
+                perguntas = new String[]{"teste3", "teste3", "teste3"};
+
+                for (int j = 0; j < perguntas.length; j++) {
+                    System.out.print("\n" + perguntas[j]);
+                }
+                break;
+        }
+
+        //resposta gonçalves
+
+        estiloEscrita("\nqual a resposta?\n");
+        int qualresposta = entrada.nextInt();
 
         int voltaMenu = entrada.nextInt();
         return voltaMenu;
@@ -81,8 +134,6 @@ public class rpg {
     }
 
 
-
-
     static void estiloEscrita(String texto) {
         for (char caractere : texto.toCharArray()) {
             System.out.print(caractere);
@@ -93,7 +144,6 @@ public class rpg {
 
             }
         }
-        return;
     }
 
     static String pegaNome(){
